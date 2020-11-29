@@ -21,57 +21,59 @@
 ## Soal 1
 
 ### Langkah Pengerjaan
+- Membuat file `topologi.sh` yang berisi topologi jaringan sesuai permintaan soal, dimana terdapat 1 router (SURABAYA), 3 switch (switch1, switch2, switch3), 4 client (SIDOARJO, GRESIK, BANYUWANGI, MADIUN), dan 3 server (MALANG, MOJOKERTO, TUBAN).
 
-- Install bind9 pada UML Malang
-- Setting /etc/bind/named.conf.local seperti dibawah ini
+![no 1](/img/putty.jpg)
 
-### Screenshot
+- Jalankan `bash topologi.sh` untuk membuat uml sesuai dengan topologi yang diatur pada `topologi.sh`
+- Ubah isi dari isi dari file `/etc/network/interfaces` pada setiap uml sesuai dengan gambar dibawah ini.
 
-![no 1](/img/namedConfLocalMalang.jpg)
+- SURABAYA
 
-- mkdir /etc/bind/semeru
-- copy file db.local menjadi semeruc03.pw 
+![no 1](/img/surabayainterface.jpg)
 
-```sh
-cp /etc/bind/db.local /etc/bind/semeru/semeruc03.pw
-```
+- MALANG
 
-- edit file semeruc03.pw
+![no 1](/img/malanginterface.jpg)
 
-### Screenshot
+- MOJOKERTO
 
-![no 1](/img/semeruc03.pw.jpg)
+![no 1](/img/mojointerface.jpg)
 
-- `service bind9 restart` pada UML Malang
-- setting pada client ***GRESIK*** dengan perintah
+- TUBAN
 
-```sh
-nano /etc/resolve.conf
-```
+![no 1](/img/tubaninteface.jpg)
 
-- masukkan ip malang, dan coba ping
+- GRESIK
 
-### Screenshot
+![no 1](/img/gresikinterface.jpg)
 
-![no 1](/img/resolvGresik.jpg)
-![no 1](/img/pingSemeru.jpg)
+- SIDOARJO
 
+![no 1](/img/sidoarjointerface.jpg)
+
+- BANYUWANGI
+
+![no 1](/img/banyuwangiinterface.jpg)
+
+- MADIUN
+
+![no 1](/img/madiuninterface.jpg)
+
+- Jalankan `service networking restart` pada setiap client agar bisa mendapatkan IP
+- Jalankan `ifconfig` untuk memeriksa IP yang didapatkan setiap client
+
+![no 1](/img/ifconfig.jpg)
 
 ## Soal 2
 ### Langkah Pengerjaan
 
-- jalankan perintah `nano /etc/bind/semeru/semeruc03.pw` pada UML Malang dan ditambahkan beberapa konfigurasi dibawah
-
-### Screenshot
+- Install `isc-dhcp-relay` pada uml SURABAYA (**DHCP Relay**)
+- Ubah konfigurasi yang ada pada file `/etc/default/isc-dhcp-relay` menjadi seperti gambar dibawah ini
 
 ![no 2](/img/semeruc03.pw.jpg)
 
-- service bind9 restart pada UML Malang
-- lalu cek ping pada UML Client
-
-### Screenshot
-
-![no 2](/img/wwwsemeru.jpg)
+- Jalankan `service isc-dhcp-relay restart`
 
 ## Soal 3
 
